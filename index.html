@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- Nav Bar Section-->
+    <!-- Navbar Section-->
     <div class="header bg-[#15803d]">
       <nav class="max-w-[1420px] mx-auto">
         <div class="navbar shadow-sm">
@@ -74,7 +74,7 @@
         </figure>
         <div class="banner-middle text-center space-y-3">
           <h1 class="lg:text-4xl font-bold">Plant a Tree, Grow a Future</h1>
-          <p>
+          <p class="hidden lg:block">
             Join our mission to plant 1 million trees and make the Earth greener
             for future generations.
           </p>
@@ -90,6 +90,65 @@
 
     <!-- Main Section -->
     <section class="bg-[#f0fdf4]">
+      <main class="max-w-[1400px] mx-auto">
+        <h1 class="text-4xl font-bold text-center py-10">Choose Your Trees</h1>
+        <div class="container grid grid-cols-5 gap-3">
+          <aside class="category-container">Category</aside>
+          <div
+            class="card-container col-span-3 bg-white grid grid-cols-3 gap-3"
+          >
+            <div class="card shadow-lg border-1 border-gray-500 p-3">
+              <div>
+                <figure><img src="./assets/about.png" alt="" /></figure>
+              </div>
+              <div class="space-y-3 py-3">
+                <h3 class="text-lg font-semibold">Title</h3>
+                <p>description</p>
+                <div class="flex justify-between">
+                  <button class="btn rounded-2xl bg-sky-200">category</button>
+                  <h3 class="text-xl font-bold">Price</h3>
+                </div>
+              </div>
+              <button class="btn w-full bg-green-700 rounded-xl text-white">
+                Add to cart
+              </button>
+            </div>
+            <div class="card shadow-lg border-1 border-gray-500 p-3">
+              <div>
+                <figure><img src="./assets/about.png" alt="" /></figure>
+              </div>
+              <div class="space-y-3 py-3">
+                <h3 class="text-lg font-semibold">Title</h3>
+                <p>description</p>
+                <div class="flex justify-between">
+                  <button class="btn rounded-2xl bg-sky-200">category</button>
+                  <h3 class="text-xl font-bold">Price</h3>
+                </div>
+              </div>
+              <button class="btn w-full bg-green-700 rounded-xl text-white">
+                Add to cart
+              </button>
+            </div>
+            <div class="card shadow-lg border-1 border-gray-500 p-3">
+              <div>
+                <figure><img src="./assets/about.png" alt="" /></figure>
+              </div>
+              <div class="space-y-3 py-3">
+                <h3 class="text-lg font-semibold">Title</h3>
+                <p>description</p>
+                <div class="flex justify-between">
+                  <button class="btn rounded-2xl bg-sky-200">category</button>
+                  <h3 class="text-xl font-bold">Price</h3>
+                </div>
+              </div>
+              <button class="btn w-full bg-green-700 rounded-xl text-white">
+                Add to cart
+              </button>
+            </div>
+          </div>
+          <aside class="cart-container bg-white">Cart</aside>
+        </div>
+      </main>
       <!-- Campain Section -->
       <section class="campain max-w-[1420px] mx-auto py-10">
         <h1 class="text-4xl font-bold text-center py-10">About the Campaign</h1>
@@ -122,7 +181,7 @@
     <section class="bg-[#cff0dc]">
       <div class="impact-container max-w-[1420px] mx-auto py-10">
         <h1 class="text-3xl font-bold text-center py-5">Our Impact</h1>
-        <div class="impact-card grid grid-cols-3 gap-5 p-2">
+        <div class="impact-card grid lg:grid-cols-3 gap-5 p-2">
           <div
             class="bg-white py-8 px-10 flex flex-col justify-center items-center rounded-xl"
           >
@@ -147,7 +206,7 @@
 
     <!-- Form section -->
     <div class="form-container bg-[#166534]">
-      <div class="max-w-[1420px] mx-auto">
+      <div class="max-w-[1420px] mx-auto py-10">
         <h1 class="text-4xl font-bold text-white text-center py-10">
           Plant a Tree Today
         </h1>
@@ -177,7 +236,7 @@
     </div>
     <footer class="bg-[#14532d]">
       <div class="max-w-[1420px] mx-auto">
-        <p class="text-white text-center py-1">
+        <p class="text-white text-center py-3">
           © 2025 Green Earth. All Rights Reserved.
         </p>
       </div>
