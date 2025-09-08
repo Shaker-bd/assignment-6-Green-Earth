@@ -47,7 +47,7 @@ const displayPlantByCategory = (plants) => {
                 <img class="max-h-50 w-full" src="${plant.image}" alt="" />
               </div>
               <div class="space-y-3 py-3">
-                <h3 class="plant-name text-lg font-semibold">${plant.name}</h3>
+                <h3 class="plant-name text-lg font-semibold  hover:bg-slate-500 hover:p-2 hover:text-white cursor-pointer">${plant.name}</h3>
                 <p class='text-justify'>=${plant.description}</p>
                 <div class="flex justify-between">
                   <button class="categoryBtn btn rounded-2xl bg-sky-200">${plant.category}</button>
@@ -63,16 +63,18 @@ const displayPlantByCategory = (plants) => {
   const addCartBtn = document.getElementsByClassName("addCartBtn");
   for (let btn of addCartBtn) {
     btn.addEventListener("click", () => {
+      const cardTitle = btn.parentNode.children[1].children[0].innerText;
       const cartPrice =
         btn.parentNode.children[1].children[2].children[1].children[1]
           .innerText;
+      alert(`Adding item ${cardTitle} and Price is ${cartPrice}`);
       const itemId = btn.parentNode.id;
-      const cardTitle = btn.parentNode.children[1].children[0].innerText;
-      const total = document.getElementById("total-price").innerText;
-      const currentTotal = Number(total) + Number(cartPrice);
+
+      let total = document.getElementById("total-price").innerText;
+      let currentTotal = Number(total) + Number(cartPrice);
       document.getElementById("total-price").innerText = currentTotal;
       cartContainer.innerHTML += `
-      <div id="${itemId}"
+      <div id="${itemId}" data-price="${cartPrice}"
                 class="cart-item flex justify-between items-center p-2 bg-sky-300 m-2 rounded-lg"
               >
                 <div>
@@ -88,6 +90,16 @@ const displayPlantByCategory = (plants) => {
       `;
     });
   }
+  cartContainer.addEventListener("click", (e) => {
+    if (e.target.closest(".deleteBtn")) {
+      const cartItem = e.target.closest(".cart-item");
+      const price = Number(cartItem.dataset.price);
+      let total = Number(document.getElementById("total-price").innerText);
+      total = total - price;
+      document.getElementById("total-price").innerText = total;
+      cartItem.remove();
+    }
+  });
   // Show Modal
   const modal = document.getElementById("my_modal_5");
   const modalHeading = document.getElementById("modal-heading");
