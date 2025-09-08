@@ -105,13 +105,45 @@
         <div id="spinner" class="flex justify-center hidden">
           <span class="loading loading-bars loading-xl"></span>
         </div>
-
+        <!-- Mobile responsive menu and container -->
+        <div class="mobile-responsive flex justify-between px-5 md:hidden">
+          <!-- category container -->
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn m-1 bg-orange-200">
+              Category
+            </div>
+            <ul
+              tabindex="0"
+              class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+            >
+              <div id="responsive-container"></div>
+            </ul>
+          </div>
+          <!-- cart -->
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn m-1 bg-orange-200">
+              <i class="fa-solid fa-cart-plus text-xl"></i>
+            </div>
+            <ul
+              tabindex="0"
+              class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+            >
+              <div id="responsive-cart"></div>
+              <h1 class="font-bold">
+                Total: <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                ><span id="total-price">00</span>
+              </h1>
+            </ul>
+          </div>
+        </div>
+        <!-- Category for lg -->
         <div class="container grid grid-cols-5 gap-3">
           <aside class="category hidden md:block">
-            <h2>Category</h2>
+            <h2 class="text-xl font-bold">Category</h2>
             <div id="category-container"></div>
           </aside>
           <!-- Card Section -->
+
           <div
             id="card-container"
             class="card-container col-span-full p-2 md:col-span-3 bg-white md:grid grid-cols-3 gap-3 space-y-2"

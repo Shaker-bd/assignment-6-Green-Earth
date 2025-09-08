@@ -1,6 +1,9 @@
 const categoryContainer = document.getElementById("category-container");
 const cardContainer = document.getElementById("card-container");
 const cartContainer = document.getElementById("cart-container");
+const responsiveContainer = document.getElementById("responsive-container");
+const responsiveCart = document.getElementById("responsive-cart");
+
 const loadCategory = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
@@ -16,8 +19,25 @@ const displayCategory = (categories) => {
             ${category.category_name}
             </li>
             `;
+    responsiveContainer.innerHTML += `
+            <li id= "${category.id}" class="px-2 py-1 font-semibold p-1 hover:cursor-pointer hover:bg-green-600 hover:text-white list-none">
+            ${category.category_name}
+            </li>
+            `;
   });
   categoryContainer.addEventListener("click", (e) => {
+    cardContainer.innerHTML = "";
+    const allLi = document.querySelectorAll("li");
+    allLi.forEach((category) => {
+      category.classList.remove("bg-green-500");
+    });
+    if (e.target.localName === "li") {
+      e.target.classList.add("bg-green-500");
+      loadPlantByCategory(e.target.id);
+    }
+  });
+  // Mobile category container
+  responsiveContainer.addEventListener("click", (e) => {
     cardContainer.innerHTML = "";
     const allLi = document.querySelectorAll("li");
     allLi.forEach((category) => {
@@ -47,7 +67,7 @@ const displayPlantByCategory = (plants) => {
                 <img class="max-h-50 w-full" src="${plant.image}" alt="" />
               </div>
               <div class="space-y-3 py-3">
-                <h3 class="plant-name text-lg font-semibold  hover:bg-slate-500 hover:p-2 hover:text-white cursor-pointer">${plant.name}</h3>
+                <h3 class="plant-name text-lg font-semibold  hover:bg-slate-300 hover:p-2 hover:text-white cursor-pointer">${plant.name}</h3>
                 <p class='text-justify'>=${plant.description}</p>
                 <div class="flex justify-between">
                   <button class="categoryBtn btn rounded-2xl bg-sky-200">${plant.category}</button>
@@ -67,7 +87,7 @@ const displayPlantByCategory = (plants) => {
       const cartPrice =
         btn.parentNode.children[1].children[2].children[1].children[1]
           .innerText;
-      alert(`Adding item ${cardTitle} and Price is ${cartPrice}`);
+      alert(`Adding item ${cardTitle}. Price is ${cartPrice}`);
       const itemId = btn.parentNode.id;
 
       let total = document.getElementById("total-price").innerText;
@@ -88,9 +108,35 @@ const displayPlantByCategory = (plants) => {
                 </div>
               </div>
       `;
+      responsiveCart.innerHTML += `
+      <div id="${itemId}" data-price="${cartPrice}"
+                class="cart-item flex justify-between items-center p-2 bg-sky-300 m-2 rounded-lg"
+              >
+                <div>
+                  <h3 class="font-semibold text-base">${cardTitle}</h3>
+                  <p><i class="fa-solid fa-bangladeshi-taka-sign text-sm"></i> ${cartPrice}</p>
+                </div>
+                <div
+                  class="deleteBtn hover:bg-red-600 hover:text-white text-lg p-2 rounded-xl"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+              </div>
+      `;
     });
   }
   cartContainer.addEventListener("click", (e) => {
+    if (e.target.closest(".deleteBtn")) {
+      const cartItem = e.target.closest(".cart-item");
+      const price = Number(cartItem.dataset.price);
+      let total = Number(document.getElementById("total-price").innerText);
+      total = total - price;
+      document.getElementById("total-price").innerText = total;
+      cartItem.remove();
+    }
+  });
+  // Responsive cart
+  responsiveCart.addEventListener("click", (e) => {
     if (e.target.closest(".deleteBtn")) {
       const cartItem = e.target.closest(".cart-item");
       const price = Number(cartItem.dataset.price);
