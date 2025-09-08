@@ -60,8 +60,6 @@ const loadPlantByCategory = (categoryId) => {
 };
 
 const displayPlantByCategory = (plants) => {
-  document.getElementById("total-price-desktop").innerHTML = "";
-  document.getElementById("total-price-mobile").innerHTML = "";
   plants.forEach((plant) => {
     cardContainer.innerHTML += `
     <div id="${plant.id}" class="card shadow-lg border-1 border-gray-500 p-1 flex flex-col justify-between">
