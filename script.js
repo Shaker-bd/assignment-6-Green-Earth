@@ -90,9 +90,21 @@ const displayPlantByCategory = (plants) => {
       alert(`Adding item ${cardTitle}. Price is ${cartPrice}`);
       const itemId = btn.parentNode.id;
 
-      let total = document.getElementById("total-price").innerText;
-      let currentTotal = Number(total) + Number(cartPrice);
-      document.getElementById("total-price").innerText = currentTotal;
+      let totalDesktop = document.getElementById(
+        "total-price-desktop"
+      ).innerText;
+      let totalMobile = document.getElementById("total-price-mobile").innerText;
+
+      const updatePrice = (price) => {
+        let currentDesktopTotal = Number(totalDesktop) + Number(price);
+        let currentMobileTotal = Number(totalMobile) + Number(price);
+        document.getElementById("total-price-desktop").innerText =
+          currentDesktopTotal;
+        document.getElementById("total-price-mobile").innerText =
+          currentMobileTotal;
+      };
+      updatePrice(cartPrice);
+
       cartContainer.innerHTML += `
       <div id="${itemId}" data-price="${cartPrice}"
                 class="cart-item flex justify-between items-center p-2 bg-sky-300 m-2 rounded-lg"
@@ -129,9 +141,11 @@ const displayPlantByCategory = (plants) => {
     if (e.target.closest(".deleteBtn")) {
       const cartItem = e.target.closest(".cart-item");
       const price = Number(cartItem.dataset.price);
-      let total = Number(document.getElementById("total-price").innerText);
+      let total = Number(
+        document.getElementById("total-price-desktop").innerText
+      );
       total = total - price;
-      document.getElementById("total-price").innerText = total;
+      document.getElementById("total-price-desktop").innerText = total;
       cartItem.remove();
     }
   });
@@ -140,9 +154,11 @@ const displayPlantByCategory = (plants) => {
     if (e.target.closest(".deleteBtn")) {
       const cartItem = e.target.closest(".cart-item");
       const price = Number(cartItem.dataset.price);
-      let total = Number(document.getElementById("total-price").innerText);
+      let total = Number(
+        document.getElementById("total-price-mobile").innerText
+      );
       total = total - price;
-      document.getElementById("total-price").innerText = total;
+      document.getElementById("total-price-mobile").innerText = total;
       cartItem.remove();
     }
   });
@@ -151,6 +167,8 @@ const displayPlantByCategory = (plants) => {
   const modalHeading = document.getElementById("modal-heading");
   const modalImage = document.getElementById("modal-image");
   const modalText = document.getElementById("modal-text");
+  const modalCategory = document.getElementById("modal-category");
+  const modalPrice = document.getElementById("modal-price");
   const plantName = document.getElementsByClassName("plant-name");
   for (let name of plantName) {
     name.addEventListener("click", (e) => {
@@ -158,9 +176,13 @@ const displayPlantByCategory = (plants) => {
       const plantImage =
         e.target.parentNode.parentNode.children[0].children[0].src;
       const plantDescription = e.target.parentNode.children[1].innerText;
-
+      const plantCategory =
+        e.target.parentNode.children[2].children[0].innerText;
+      const plantPrice = e.target.parentNode.children[2].children[1].innerText;
       modalHeading.innerText = plantTitle;
       modalImage.src = plantImage;
+      modalCategory.innerHTML = `Category: ${plantCategory}`;
+      modalPrice.innerHTML = `Price: ${plantPrice}`;
       modalText.innerText = plantDescription;
       modal.showModal();
     });

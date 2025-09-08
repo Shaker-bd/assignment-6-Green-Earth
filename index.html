@@ -55,6 +55,7 @@
                 <li><a>Plant a Tree</a></li>
               </ul>
             </div>
+            <img class="max-w-10 rounded-xl" src="./assets/images.png" alt="" />
             <a class="btn btn-ghost text-xl text-white">Green Earth</a>
           </div>
           <div class="navbar-center hidden md:flex">
@@ -75,6 +76,13 @@
     </div>
     <!-- Banner/Hero Section -->
     <div class="banner-container bg-[#cff0dc]">
+      <div class="text-center py-5 md:hidden">
+        <h1 class="text-xl font-bold">Plant a Tree, Grow a Future</h1>
+        <p>
+          Join our mission to plant 1 million trees and make the Earth greener
+          for future generations.
+        </p>
+      </div>
       <div
         class="banner max-w-[1420px] mx-auto flex items-center justify-between gap-10"
       >
@@ -82,12 +90,14 @@
           <img src="./assets/hero-leaf1.png" alt="" />
         </figure>
         <div class="banner-middle text-center space-y-3">
-          <h1 class="lg:text-4xl font-bold">Plant a Tree, Grow a Future</h1>
-          <p class="hidden lg:block">
+          <h1 class="lg:text-4xl font-bold hidden md:block">
+            Plant a Tree, Grow a Future
+          </h1>
+          <p class="hidden md:block">
             Join our mission to plant 1 million trees and make the Earth greener
             for future generations.
           </p>
-          <button class="btn rounded-3xl bg-[#facc15] px-2 py-1 text-green-500">
+          <button class="btn rounded-3xl bg-[#facc15] px-4 py-2 text-green-500">
             Get Involved
           </button>
         </div>
@@ -107,7 +117,7 @@
         </div>
         <!-- Mobile responsive menu and container -->
         <div class="mobile-responsive flex justify-between px-5 md:hidden">
-          <!-- category container -->
+          <!-- Mobile responsive category container -->
           <div class="dropdown">
             <div tabindex="0" role="button" class="btn m-1 bg-orange-200">
               Category
@@ -119,7 +129,7 @@
               <div id="responsive-container"></div>
             </ul>
           </div>
-          <!-- cart -->
+          <!-- Mobile responsive cart -->
           <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn m-1 bg-orange-200">
               <i class="fa-solid fa-cart-plus text-xl"></i>
@@ -131,7 +141,7 @@
               <div id="responsive-cart"></div>
               <h1 class="font-bold">
                 Total: <i class="fa-solid fa-bangladeshi-taka-sign"></i
-                ><span id="total-price">00</span>
+                ><span id="total-price-mobile">00</span>
               </h1>
             </ul>
           </div>
@@ -153,7 +163,7 @@
             <div id="cart-container"></div>
             <h1 class="font-bold">
               Total: <i class="fa-solid fa-bangladeshi-taka-sign"></i
-              ><span id="total-price">00</span>
+              ><span id="total-price-desktop">00</span>
             </h1>
           </aside>
         </div>
@@ -169,9 +179,14 @@
               id="modal-image"
               src=""
               alt="Plant Image"
-              class="w-[70%] max-h-50 mx-auto rounded-lg"
+              class="w-[85%] max-h-50 mx-auto rounded-lg"
             />
           </figure>
+          <button
+            id="modal-category"
+            class="bg-slate-600 rounded-xl font-bold p-2 text-white"
+          ></button>
+          <h2 id="modal-price" class="text-xl font-bold"></h2>
           <p id="modal-text" class="py-4"></p>
           <div class="modal-action">
             <form method="dialog">
