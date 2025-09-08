@@ -11,6 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Font Awsome Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>Green Earth</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -21,7 +30,7 @@
         <div class="navbar shadow-sm">
           <div class="navbar-start">
             <div class="dropdown">
-              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -48,7 +57,7 @@
             </div>
             <a class="btn btn-ghost text-xl text-white">Green Earth</a>
           </div>
-          <div class="navbar-center hidden lg:flex">
+          <div class="navbar-center hidden md:flex">
             <ul class="menu menu-horizontal px-1 text-white">
               <li><a>About</a></li>
               <li><a>Gallery</a></li>
@@ -92,12 +101,22 @@
     <section class="bg-[#f0fdf4]">
       <main class="max-w-[1400px] mx-auto">
         <h1 class="text-4xl font-bold text-center py-10">Choose Your Trees</h1>
+        <!-- Spinner -->
+        <div id="spinner" class="flex justify-center hidden">
+          <span class="loading loading-bars loading-xl"></span>
+        </div>
+
         <div class="container grid grid-cols-5 gap-3">
-          <aside class="category-container">Category</aside>
+          <aside class="category hidden md:block">
+            <h2>Category</h2>
+            <div id="category-container"></div>
+          </aside>
+          <!-- Card Section -->
           <div
-            class="card-container col-span-3 bg-white grid grid-cols-3 gap-3"
+            id="card-container"
+            class="card-container col-span-full p-2 md:col-span-3 bg-white md:grid grid-cols-3 gap-3 space-y-2"
           >
-            <div class="card shadow-lg border-1 border-gray-500 p-3">
+            <!-- <div class="card shadow-lg border-1 border-gray-500 p-3">
               <div>
                 <figure><img src="./assets/about.png" alt="" /></figure>
               </div>
@@ -144,11 +163,42 @@
               <button class="btn w-full bg-green-700 rounded-xl text-white">
                 Add to cart
               </button>
-            </div>
+            </div> -->
           </div>
-          <aside class="cart-container bg-white">Cart</aside>
+          <aside class="cart-section bg-white hidden md:block">
+            <h1 class="text-lg font-bold text-center">Cart</h1>
+            <div id="cart-container"></div>
+            <h1 class="font-bold">
+              Total: <i class="fa-solid fa-bangladeshi-taka-sign"></i
+              ><span id="total-price">00</span>
+            </h1>
+          </aside>
         </div>
       </main>
+
+      <!-- Open modal-->
+      <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+      <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <h3 id="modal-heading" class="font-bold text-lg"></h3>
+          <figure class="flex py-4 mx-auto">
+            <img
+              id="modal-image"
+              src=""
+              alt="Plant Image"
+              class="w-[70%] max-h-50 mx-auto rounded-lg"
+            />
+          </figure>
+          <p id="modal-text" class="py-4">
+            Press ESC key or click the button below to close
+          </p>
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
       <!-- Campain Section -->
       <section class="campain max-w-[1420px] mx-auto py-10">
         <h1 class="text-4xl font-bold text-center py-10">About the Campaign</h1>
