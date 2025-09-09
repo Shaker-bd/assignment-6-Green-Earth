@@ -141,11 +141,11 @@ const displayPlantByCategory = (plants) => {
     if (e.target.closest(".deleteBtn")) {
       const cartItem = e.target.closest(".cart-item");
       const price = Number(cartItem.dataset.price);
-      let total = Number(
+      let totalDesktop = Number(
         document.getElementById("total-price-desktop").innerText
       );
-      total = total - price;
-      document.getElementById("total-price-desktop").innerText = total;
+      totalDesktop -= price;
+      document.getElementById("total-price-desktop").innerText = totalDesktop;
       cartItem.remove();
     }
   });
@@ -154,11 +154,11 @@ const displayPlantByCategory = (plants) => {
     if (e.target.closest(".deleteBtn")) {
       const cartItem = e.target.closest(".cart-item");
       const price = Number(cartItem.dataset.price);
-      let total = Number(
+      let totalMobile = Number(
         document.getElementById("total-price-mobile").innerText
       );
-      total = total - price;
-      document.getElementById("total-price-mobile").innerText = total;
+      totalMobile -= price;
+      document.getElementById("total-price-mobile").innerText = totalMobile;
       cartItem.remove();
     }
   });
